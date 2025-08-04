@@ -5,6 +5,7 @@ import RateLimitAlert from '../components/RateLimitAlert'
 import axios from 'axios'
 import NoteCard from '../components/NoteCard.jsx'
 import NoteNotFound from '../components/NoteNotFound.jsx'
+import api from '../lib/axios.js'
 
 
 const HomePage = () => {
@@ -15,8 +16,7 @@ const HomePage = () => {
     useEffect(() => {
       const fetchNotes = async () => {
         try {
-          const res = await axios.get("http://localhost:5001/api/notes");
-          console.log(res.data)
+          const res = await api.get("/notes");
           setNotes(res.data)
           setIsRateLimit(false)
         } 
